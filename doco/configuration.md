@@ -394,7 +394,6 @@ public class GraphQlControllerTests :
     XunitLoggingBase
 {
     static HttpClient client;
-
     static WebSocketClient websocketClient;
     static Task startTask;
 
@@ -403,7 +402,7 @@ public class GraphQlControllerTests :
         startTask = Start();
     }
 
-    private static async Task Start()
+    static async Task Start()
     {
         await DbContextBuilder.Start();
         var server = GetTestServer();
@@ -673,7 +672,7 @@ subscription
     }
 }
 ```
-<sup>[snippet source](/src/SampleWeb.Tests/GraphQlControllerTests.cs#L13-L298)</sup>
+<sup>[snippet source](/src/SampleWeb.Tests/GraphQlControllerTests.cs#L13-L297)</sup>
 <!-- endsnippet -->
 
 

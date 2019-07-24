@@ -28,8 +28,11 @@ public class ExpressionBuilderTests :
             }
         };
 
-        var result = list.AsQueryable()
-            .Where(ExpressionBuilder<Target>.BuildPredicate("Member.Length", Comparison.Equal, new[] {"2"}))
+        var queryable = list.AsQueryable()
+            .Where(ExpressionBuilder<Target>.BuildPredicate("Member.Length", Comparison.Equal, new[] {"2"}));
+
+        ObjectApproval.ObjectApprover.VerifyWithJson(queryable);
+        var result = queryable
             .Single();
         Assert.Equal("bb", result.Member);
     }

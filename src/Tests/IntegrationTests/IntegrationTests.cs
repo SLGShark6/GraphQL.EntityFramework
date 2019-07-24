@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ApprovalTests;
 using EfLocalDb;
 using GraphQL;
 using GraphQL.EntityFramework;
@@ -652,6 +654,29 @@ query ($id: String!)
             var result = await RunQuery(database, query, inputs, null, entity1, entity2);
             ObjectApprover.VerifyWithJson(result);
         }
+    }
+
+    [Fact]
+    public void Test_parent_entities()
+    {
+        var namer = Approvals.GetDefaultNamer();
+        var inputFile = Path.Combine(namer.SourcePath, namer.Name + "input.graphql");
+        var graphQlInput = File.ReadAllText(inputFile);
+
+        GraphQlToEntityFrameworkApprovals.Verify(graphQlInput);
+    }
+
+    [Fact]
+    public void Test_parent_entities_long()
+    {
+        var query = @"
+{
+  parentEntities (ids: '00000000-0000-0000-0000-000000000001')
+  {
+    property
+  }
+}";
+        GraphQlToEntityFrameworkApprovals.Verify(query);
     }
 
     [Fact]

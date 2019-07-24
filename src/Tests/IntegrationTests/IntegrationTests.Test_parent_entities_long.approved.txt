@@ -1,0 +1,11 @@
+﻿For query:
+{
+  parentEntities (ids: '00000000-0000-0000-0000-000000000001')
+  {
+    property
+  }
+}
+Resulting SQL:
+Select property From parentEntities where id = '00000000-0000-0000-0000-000000000001
+With results:
+xxxxx
