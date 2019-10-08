@@ -69,6 +69,9 @@ csharp_new_line_before_members_in_anonymous_types = true:error
 # ASP0000: Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
 dotnet_diagnostic.ASP0000.severity = none
 
+# CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+dotnet_diagnostic.CS8632.severity = none
+
 [*.{csproj,targets,props}]
 indent_size = 2
 
