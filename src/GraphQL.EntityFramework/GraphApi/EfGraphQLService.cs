@@ -28,8 +28,8 @@ namespace GraphQL.EntityFramework
             foreach (var entityType in model.GetEntityTypes())
             {
                 var primaryKey = entityType.FindPrimaryKey();
-                //This can happen for views
-                if (primaryKey == null)
+                // This can happen for views and for Owned types
+                if (primaryKey == null || keyNames.ContainsKey(entityType.ClrType))
                 {
                     continue;
                 }
