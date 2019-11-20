@@ -49,7 +49,12 @@ namespace GraphQL.EntityFramework
 
             if (dbContext == null)
             {
-                dbContext = context => provider.GetRequiredService<TDbContext>();
+                dbContext = context =>
+                {
+                    var dbContext = provider.GetRequiredService<TDbContext>();
+                    dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking; // Disable Query Tracking for faster querying
+                    return dbContext;
+                };
             }
 
             return new EfGraphQLService<TDbContext>(
