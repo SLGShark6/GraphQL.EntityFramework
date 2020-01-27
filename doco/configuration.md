@@ -42,9 +42,10 @@ public static void RegisterInContainer<TDbContext>(
         IServiceCollection services,
         ResolveDbContext<TDbContext>? resolveDbContext = null,
         IModel? model = null,
-        ResolveFilters? resolveFilters = null)
+        ResolveFilters? resolveFilters = null,
+        ServiceLifetime lifetime = ServiceLifetime.Scoped)
 ```
-<sup>[snippet source](/src/GraphQL.EntityFramework/EfGraphQLConventions.cs#L18-L24) / [anchor](#snippet-registerincontainer)</sup>
+<sup>[snippet source](/src/GraphQL.EntityFramework/EfGraphQLConventions.cs#L20-L27) / [anchor](#snippet-registerincontainer)</sup>
 <a id='snippet-registerincontainer-1'/></a>
 ```cs
 EfGraphQLConventions.RegisterInContainer<MyDbContext>(
@@ -134,9 +135,10 @@ public static void RegisterInContainer<TDbContext>(
         IServiceCollection services,
         ResolveDbContext<TDbContext>? resolveDbContext = null,
         IModel? model = null,
-        ResolveFilters? resolveFilters = null)
+        ResolveFilters? resolveFilters = null,
+        ServiceLifetime lifetime = ServiceLifetime.Scoped)
 ```
-<sup>[snippet source](/src/GraphQL.EntityFramework/EfGraphQLConventions.cs#L18-L24) / [anchor](#snippet-registerincontainer)</sup>
+<sup>[snippet source](/src/GraphQL.EntityFramework/EfGraphQLConventions.cs#L20-L27) / [anchor](#snippet-registerincontainer)</sup>
 <a id='snippet-registerincontainer-1'/></a>
 ```cs
 EfGraphQLConventions.RegisterInContainer<MyDbContext>(
