@@ -370,6 +370,11 @@ public class FilterBuilderTests :
     }
 
     [Theory]
+    [InlineData("Employees.Count", Comparison.Equal, "3", "Company 1")]
+    [InlineData("Employees.Count", Comparison.LessThan, "3", "Company 2")]
+    [InlineData("Employees.Count", Comparison.LessThanOrEqual, "2", "Company 2")]
+    [InlineData("Employees.Count", Comparison.GreaterThan, "2", "Company 1")]
+    [InlineData("Employees.Count", Comparison.GreaterThanOrEqual, "3", "Company 1")]
     [InlineData("Employees[Name]", Comparison.Equal, "Person 1", "Company 1")]
     [InlineData("Employees[Name]", Comparison.Equal, "Person 3", "Company 1", true)]
     [InlineData("Employees[Name]", Comparison.Contains, "son 2", "Company 1")]
@@ -405,6 +410,12 @@ public class FilterBuilderTests :
                         Name = "Person 2",
                         Age = 12,
                         DateOfBirth = new DateTime(2001, 10, 10, 10, 10, 10, DateTimeKind.Utc)
+                    },
+                    new Person
+                    {
+                        Name = "Person 4",
+                        Age = 11,
+                        DateOfBirth = new DateTime(2000, 10, 10, 10, 10, 10, DateTimeKind.Utc)
                     }
                 }
             },
@@ -451,7 +462,7 @@ public class FilterBuilderTests :
     public class Company
     {
         public string? Name { get; set; }
-        public List<Person> Employees { get; set; } = null!;
+        public IList<Person> Employees { get; set; } = null!;
     }
 
     public class Person
