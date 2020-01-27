@@ -12,7 +12,7 @@ public class GlobalFiltersTests :
         var filters= new Filters();
         filters.Add<Target>((o, target) => target.Property != "Ignore");
         Assert.True(await filters.ShouldInclude(new object(), new Target()));
-        Assert.False(await filters.ShouldInclude<object>(new object(), null));
+        Assert.False(await filters.ShouldInclude<object?>(new object(), null));
         Assert.True(await filters.ShouldInclude(new object(), new Target {Property = "Include"}));
         Assert.False(await filters.ShouldInclude(new object(), new Target {Property = "Ignore"}));
 
