@@ -84,7 +84,7 @@ static class PropertyCache<TInput>
             propertyOrField = type.GetProperty(propertyOrFieldName, bindingFlagsNonPublic);
 
         // If not found
-        if (propertyOrFieldName == null)
+        if (propertyOrField == null)
             // Attempt to get non-public property
             propertyOrField = type.GetField(propertyOrFieldName, bindingFlagsNonPublic);
 
